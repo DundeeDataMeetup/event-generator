@@ -4,7 +4,7 @@ import calendar
 from datetime import datetime
 
 # Replace with your Tito API token and account name
-API_TOKEN = 'secret_test_bH64doAAPCTZq3aR9hTs'
+API_TOKEN = '<<your api key>>'
 ACCOUNT_NAME = 'dundee-data-meetup'
 
 EVENT_TITLE_PREFIX = 'Dundee Data Meetup'
