@@ -1,4 +1,3 @@
-# Join us for our MMMM Dundee Data Meetup
 
 Join us for our monthly Dundee Data Meetup, featuring \<NUMBER> expert speakers who will share their insights into \<TOPIC>.
 
@@ -11,7 +10,7 @@ Join us for our monthly Dundee Data Meetup, featuring \<NUMBER> expert speakers 
 \<TALK DESCRIPTION>
 
 
-### **2\. Data Tracking in the Fitness World**
+### **2\. \<TALK TITLE\>**
 
 **\<SPEAKER NAME>**, \<SPEAKER TAGLINE>
 
