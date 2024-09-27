@@ -41,7 +41,7 @@ def create_event(selectedDate, content):
         "event": {
             "title": f'{EVENT_TITLE_PREFIX}: {selectedDate.strftime('%B %Y')}',
             "slug": f'{selectedDate.strftime('%b-%Y').lower()}',
-            "email": "dundeedatameetup@gmail.com",
+            "email_address": "dundeedatameetup@gmail.com",
             "location": "Dundee, UK",
             "description": header + content,
             "start_date": selectedDate.strftime('%Y-%m-%d'),
