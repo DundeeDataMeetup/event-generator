@@ -1,10 +1,16 @@
 import requests
 import json
 import calendar
+import os
 from datetime import datetime
+from dotenv import load_dotenv
+
+# Load values from .env file into environment variables
+load_dotenv()
 
 # Replace with your Tito API token and account name
-API_TOKEN = '<<your api key>>'
+# Set your Tito API token in a .env file as this is a secret
+API_TOKEN = os.environ["API_TOKEN"]
 ACCOUNT_NAME = 'dundee-data-meetup'
 
 EVENT_TITLE_PREFIX = 'Dundee Data Meetup'
