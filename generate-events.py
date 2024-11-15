@@ -53,6 +53,7 @@ def create_event(selectedDate, content):
             "start_date": selectedDate.strftime('%Y-%m-%d'),
             "end_date": selectedDate.strftime('%Y-%m-%d'),
             "live": False  # False keeps the event in draft mode; True makes it live
+            # TODO: Include banner image
         }
     }
 

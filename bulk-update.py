@@ -49,7 +49,7 @@ def get_upcoming_events():
     # Check the response
     if response.status_code == 200:
         print("Events retrieved successfully!")
-        return response.json()["events"]
+        # return response.json()["events"]
     else:
         print(f"Failed to retrieve events. Status code: {response.status_code}")
         print("Response:", response.text)
@@ -131,7 +131,7 @@ def create_tickets():
                 "title": "General admission",
                 "default_quantity": 1,
                 "price": 0,
-                "quantity": 50,
+                "quantity": 50, # TODO: Configurable quantity?
                 "state": 100,
                 "require_email": True,
                 "require_name": True,
@@ -139,7 +139,7 @@ def create_tickets():
                 "request_vat_number": False,
                 "max_tickets_per_person": 10,
                 "min_tickets_per_person": 1,
-                "success_message": "Thank you for booking. We can't wait to see you at the Abertay cyberQuarter ([1-3 Bell St, Dundee DD1 1LH, UK](http://maps.google.com/maps?q=56.4629194%2C-2.9741615+%28Abertay+cyberQuarter%2C+1-3+Bell+St%2C+Dundee+DD1+1LH%2C+UK%29)) soon!",
+                "success_message": "Thank you for booking. We can't wait to see you at the Abertay cyberQuarter ([1-3 Bell St, Dundee DD1 1LH, UK](http://maps.google.com/maps?q=56.4629194%2C-2.9741615+%28Abertay+cyberQuarter%2C+1-3+Bell+St%2C+Dundee+DD1+1LH%2C+UK%29)) soon!", # TODO: Configurable message?
                 "question_ids": question_ids,
             }
         }
@@ -150,7 +150,7 @@ def create_tickets():
         # Check the response
         if response.status_code == 201:
             print("Ticket release created successfully!")
-            print("Response:", response.json())
+            # print("Response:", response.json())
         else:
             print(
                 f"Failed to create ticket release. Status code: {response.status_code}"
