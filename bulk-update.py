@@ -49,7 +49,7 @@ def get_upcoming_events():
     # Check the response
     if response.status_code == 200:
         print("Events retrieved successfully!")
-        # return response.json()["events"]
+        return response.json()["events"]
     else:
         print(f"Failed to retrieve events. Status code: {response.status_code}")
         print("Response:", response.text)
