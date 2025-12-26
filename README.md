@@ -11,17 +11,17 @@
 
 ## Prerequisites
 
-- Python 3.12 or higher
-- [pip](https://pypi.org/project/pip/) for package management
+- Python 3.14 or higher
+- [uv](https://github.com/astral-sh/uv) for package management
 
 ## Setup
 
 ### 1. Install Dependencies
 
-Install the required dependencies using pip:
+Install the required dependencies using uv:
 
 ```bash
-pip install -r requirements.txt
+uv sync
 ```
 
 ### 2. Set Up Environment Variables
@@ -41,7 +41,7 @@ API_TOKEN=your_tito_api_token
 To generate events for a given year using a Markdown template:
 
 ```bash
-python generate-events.py
+uv run generate-events.py
 ```
 
 - This will read `event_description_template.md` and create events for each month's last Tuesday.
@@ -51,7 +51,7 @@ python generate-events.py
 To interactively create ticket releases and attendee questions for upcoming events:
 
 ```bash
-python bulk-update.py
+uv run bulk-update.py
 ```
 
 - You will be prompted to select actions and events via the command line.
@@ -61,4 +61,4 @@ python bulk-update.py
 - [`generate-events.py`](generate-events.py): Script for automated event creation.
 - [`bulk-update.py`](bulk-update.py): Script for bulk ticket and question management.
 - [`event_description_template.md`](event_description_template.md): Markdown template for event descriptions.
-- [`requirements.txt`](requirements.txt): Python dependencies.
+- [`pyproject.toml`](pyproject.toml): Project configuration and dependencies.
