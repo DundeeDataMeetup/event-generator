@@ -26,7 +26,7 @@ HEADERS = {
 # Function to get the last Tuesday of each month
 def last_tuesdays(year):
     last_tuesday_dates = []
-    for month in range(1, 2):  # Should be 13!
+    for month in range(1, 13):  # Should be 13!
         # Find the last day of the month
         last_day = calendar.monthrange(year, month)[1]
         last_date = datetime(year, month, last_day)
