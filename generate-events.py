@@ -109,7 +109,7 @@ def create_questions(event_slug):
         },
         {
             "question": {
-                "title": "To help us plan catering, would you like food provided on the day?",
+                "title": "To help us avoid food waste, do you intend to eat the supplied food? This really helps us with catering numbers.",
                 "field_type": "Select",
                 "required": True,
                 "options": "\n".join(["Yes", "No"]),
@@ -126,9 +126,9 @@ def create_questions(event_slug):
                 "options": "\n".join(
                     [
                         "I have no dietary requirements",
-                        "I prefer vegetarian food",
-                        "I prefer vegan food",
-                        "I prefer gluten-free food",
+                        "I require vegetarian food",
+                        "I require vegan food",
+                        "I require gluten-free food",
                     ]
                 ),
                 "slug": "dietary-requirements",
@@ -206,7 +206,6 @@ def create_tickets(event_slug, question_ids, selected_date):
             "price": 0,
             "quantity": 50,
             "end_at": selected_date.strftime("%Y-%m-%dT20:00:00.000+00:00"),
-            "state": 100,
             "require_email": True,
             "require_name": True,
             "request_company_name": False,
