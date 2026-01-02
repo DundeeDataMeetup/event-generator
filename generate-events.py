@@ -205,6 +205,7 @@ def create_tickets(event_slug, question_ids, selected_date):
             "default_quantity": 1,
             "price": 0,
             "quantity": 50,
+            "state": 100, # 100 = active
             "end_at": selected_date.strftime("%Y-%m-%dT20:00:00.000+00:00"),
             "require_email": True,
             "require_name": True,
