@@ -62,6 +62,8 @@ def create_event(selectedDate, content, additional_info):
             "timezone": "Edinburgh",
             "homepage_url": "https://ddm.scot",
             "additional_info": additional_info,
+            "ticket_cancelling_enabled": "1",
+            "resell_attendee_voided_tickets": "1"
         }
     }
 
@@ -197,7 +199,10 @@ def create_tickets(event_slug, question_ids, selected_date):
     # The Tickets endpoint in Tito is used for registered tickets for attendees
     url = f"https://api.tito.io/v3/{ACCOUNT_NAME}/{event_slug}/releases"
 
-    question_ids_values = list(question_ids.values())
+    # Exclude the dietary requirements question from the ticket questions
+    # Conditional questions don't need to be attached to tickets
+    # See: https://help.tito.io/en/articles/9829016-can-i-create-conditional-questions#:~:text=Be%20sure%20not%20to%20attach%20the%20follow%2Dup%20question
+    question_ids_values = [question_ids["contact-consent"], question_ids["catering-option"]]
 
     body = {
         "release": {
