@@ -75,7 +75,13 @@ def create_event(selectedDate, content, additional_info):
         print("Event created successfully!")
         print("Response:", response.json())
         question_ids = create_questions(slug)
+        if not question_ids:
+            print("Failed to create questions; skipping ticket and check-in list creation.")
+            return
         ticket_id = create_tickets(slug, question_ids, selectedDate)
+        if not ticket_id:
+            print("Failed to create tickets; skipping check-in list creation.")
+            return
         create_checkin_list(slug, ticket_id)
 
     else:
@@ -215,18 +221,44 @@ def create_tickets(event_slug, question_ids, selected_date):
     # Make the API request to create ticket releases
     response = requests.post(url, headers=HEADERS, data=json.dumps(body))
 
+    # Attempt to parse the JSON response once
+    try:
+        data = response.json()
+    except ValueError:
+        data = None
+
     # Check the response
-    if response.status_code == 201:
+    if response.status_code == 201 and isinstance(data, dict):
         print("Tickets created successfully!")
-        print("Response:", response.json())
+        print("Response:", data)
+
+        release = data.get("release") if isinstance(data.get("release"), dict) else None
+        ticket_id = release.get("id") if release is not None else None
+
+        if ticket_id is not None:
+            return ticket_id
+
+        print("Ticket creation response did not contain a valid release id.")
+        return None
+
+    # Non-201 status or invalid/missing JSON structure
+    print(f"Failed to create tickets. Status code: {response.status_code}")
+    # If JSON parsing succeeded, log it; otherwise fall back to raw text
+    if data is not None:
+        print("Response:", data)
     else:
-        print(f"Failed to create tickets. Status code: {response.status_code}")
         print("Response:", response.text)
 
-    return response.json()["release"]["id"]
+    return None
 
 
 def create_checkin_list(event_slug, ticket_id):
+    if not ticket_id:
+        print(
+            f"Cannot create check-in list for event {event_slug}: "
+            "no valid ticket_id was provided."
+        )
+        return
     print(f"Creating check-in list for event {event_slug}")
 
     checkins_create_url = (
