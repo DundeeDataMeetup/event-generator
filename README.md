@@ -9,6 +9,12 @@
 - **Automated Event Creation:** Generate recurring events (e.g. last Tuesday of each month) with templated descriptions.
 - **Bulk Ticket & Question Management:** Interactively create ticket releases and attendee questions for multiple events.
 
+## Limitations
+
+The Tito API has certain limitations that require manual intervention:
+* Venue location must be set manually after event creation.
+* Banner images must be uploaded manually after event creation.
+
 ## Prerequisites
 
 - Python 3.14 or higher
